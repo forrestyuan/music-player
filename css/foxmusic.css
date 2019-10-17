@@ -1,0 +1,89 @@
+html,body{margin:0;padding:0;}
+.musicBox{position:fixed;margin:0;padding:0;font-family:sans-serif;width:100%;height:100%;font-size:12px;background-repeat: no-repeat;background-size:cover;}
+.pdl-5{padding-left: 5px;}
+.fz-12{font-size: 12px}
+.fz-16{font-size: 16px}
+.fz-18{font-size: 18px}
+@keyframes rotateMove{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+@keyframes curPointColorRun{
+  0%{background-color: rgb(0, 204, 255);}
+  25%{background-color: rgb(0, 255, 234);}
+  50%{background-color: rgb(115, 255, 0);}
+  75%{background-color: rgb(255, 230, 0);}
+  100%{background-color:rgb(255, 102, 0);}
+}
+
+@keyframes musicsignRun{
+  0%{left:50%;top:50%;opacity: 1;filter:alpha(opacity=100)}
+  25%{left:40%;top:30%;opacity: 1;filter:alpha(opacity=100)}
+  50%{left:30%;top:20%;opacity: 0.8;filter:alpha(opacity=80)}
+  75%{left:40%;top:10%;opacity: 0.3;filter:alpha(opacity=30)}
+  100%{left:10%;top:0%;opacity: 0;filter:alpha(opacity=0)}
+}
+@keyframes musicsignRun2{
+  0%{left:50%;top:50%;opacity: 1;filter:alpha(opacity=100)}
+  25%{left:55%;top:30%;opacity: 1;filter:alpha(opacity=100)}
+  50%{left:50%;top:20%;opacity: 0.8;filter:alpha(opacity=80)}
+  75%{left:60%;top:10%;opacity: 0.3;filter:alpha(opacity=30)}
+  100%{left:80%;top:0%;opacity: 0;filter:alpha(opacity=0)}
+}
+
+.warpCard{position: absolute;width:100%;height:500px;top:0;left:0;right:0;bottom:0;margin:auto;padding:15px;box-sizing: border-box;perspective: 1400px;}
+/*音乐卡片*/
+.cardBox{height: 100%;width:700px;margin:0 auto;box-sizing: border-box;box-shadow: 0 0 10px 2px #555;transform-style: preserve-3d;color:#FFF;background-color: #ff4611;border-radius: 5px;}
+
+
+.cardBox .front-side,.cardBox .back-side{position: absolute;width:100%;height: 100%;overflow: hidden;box-sizing: border-box;padding:5px;}
+.cardBox .back-side{position:relative;visibility: hidden;transform: rotateY(-180deg);}
+.cardBox .lyrics{position: absolute;font-size:14px;letter-spacing: 1px;word-spacing: 2px;width:80%;height: 80%;left:0;right: 0;bottom:0;top:50px;margin:0 auto;line-height: 2;font-weight: 100;overflow: hidden;user-select:none;cursor: -webkit-grab;overflow-y: visible;}
+.cardBox .lyrics p{text-align: center;padding:0 0 0 20px;}
+.cardBox .lyrics p.active{background-color: rgba(0,0,0,0.5);font-size: larger;border-radius: 10px;}
+.cardBox .lyrics p.active::before{content:'>';color:red;font-weight: 700;font-size: 18px;line-height:30px;position: absolute;left:0;font-size: 30px;}
+
+.cardBox .toggleSongLyric{position: absolute; right:-20px; bottom:-20px;width:60px;height:60px; color:#fff;font-size:14px;font-weight:700;cursor: pointer;padding-left: 15px;line-height: 45px;border-radius: 100%;box-sizing: border-box;border:solid 2px #FFF;}
+.cardBox .toggleSongLyric:hover{color:#ff4611;background-color: #fff;border:solid 2px #fff;}
+
+
+.cardBox .cardDetail{overflow: hidden; /*create BFC*/}
+.cardBox .songInfo{float:left;width:370px;padding-left:40px;box-sizing: border-box;font-size: 16px;}
+.cardBox .songInfo dl,
+.cardBox .songInfo dd{margin:10px 0;padding:0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+/*海报图*/
+.cardBox .songPoster{position:relative;overflow: hidden;float:right;width:250px;height:250px;}
+.cardBox .songPoster>img{border-radius: 100%;width:100%;height:100%;border: solid 35px #222;box-sizing: border-box;}
+.cardBox .songPoster .fa-music{animation-play-state: paused!important; transition:all linear 0s;position: absolute;left:50%;top:50%;opacity: 0; filter:alpha(opacity=0)}
+.cardBox .songPoster .fa-music:nth-child(2){animation:musicsignRun2 3s linear infinite;animation-delay: 1.5s;}
+.cardBox .songPoster .fa-music:nth-child(3){animation:musicsignRun 3s linear infinite;animation-delay: 2s}
+.cardBox .songPoster .fa-music:nth-child(4){animation:musicsignRun2 3s linear infinite;animation-delay: 2.5s}
+.cardBox .songPoster .fa-music:nth-child(5){animation:musicsignRun 3s linear infinite;animation-delay: 3s}
+.rotatePoster{animation:rotateMove 10s linear 0.5s infinite normal none paused ;}
+
+/*播放器*/
+.cardBox .progressBar{line-height: 12px;}
+.cardBox .songCtr{position: absolute;bottom: 0;width:100%;text-align: center;}
+.cardBox .songCtr .playTime,
+.cardBox .songCtr .totalTime,
+.cardBox .songCtr .curPoint{position: absolute;left:4%;font-size: 14px;}
+.cardBox .songCtr .totalTime{left:91%;}
+.cardBox .songCtr .curPoint{animation:curPointColorRun 2s linear infinite;animation-play-state:paused;width:12px;height:12px;border-radius: 100%;background-color: #0064B4;left:10%;top:-1px;}
+.cardBox .songCtr .curPoint:hover{width:16px;height:16px;top:-3px;cursor: pointer;}
+.cardBox .songCtr #playPercent {width: 80%;height:10px;display: inline-block;background-color:white;text-align: left;margin-bottom: 5px;border: 1px solid #e6e6e6;  border-radius:100px;background-color:#e6e6e6;color: #0064B4; /*IE10*/cursor: pointer;}
+.cardBox .songCtr #playPercent::-moz-progress-bar { background: #0064B4; }
+.cardBox .songCtr #playPercent::-webkit-progress-bar { background: #fff; }
+.cardBox .songCtr #playPercent::-webkit-progress-value  { background: #0064B4; }
+/*播放控制*/
+.cardBox .ctr-btn{width:100%; text-align:center;font-size: 22px;}
+.cardBox .ctr-btn div{position:relative; display:inline-block; margin:20px;width:40px; height:40px;text-align: center;line-height: 40px; border-radius: 100%; cursor: pointer;box-sizing: border-box;}
+.cardBox .ctr-btn div:hover{color:#ff4611;background-color: #fff;}
+.ctr-btn .vol-wrap .soundBar{position: absolute;display: inline-block;width: 110px;height: 10px;border-radius: 5px;background-color: white;top: 15px;left: 40px;visibility: hidden}
+.ctr-btn .vol-wrap:hover .soundBar{visibility: visible;}
+
+.ctr-btn .vol-wrap .curSoundPoint{display: inline-block;width: 15px;height: 15px;border-radius: 100%;background-color:deepskyblue;position: absolute;left: 0;top: -2px;}
+.ctr-btn .vol-wrap .volmBarBg{position:absolute;left:0;top:0;height:10px;background-color: deepskyblue;}
+
+/*搜索和列表*/
+.mc_search_box{position: absolute;background-color: #ff4611;color: #fff;max-width:700px;max-height: 700px;width:100%;height:100%;left:0;top:-300%;right:0;bottom:0;margin:auto;padding:10px;border-radius: 15px 15px 0 0;transition: all ease-in-out 1s;}
+.mc_search_box .closeBtn{position: absolute;right:-15px;top:-15px;width:30px;height:30px;background-color: #fff;color:#ff4611;font-size:30px;text-align: center;border-radius: 100%;padding:5px;cursor: pointer;}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FoxMusic</title>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/foxmusic.css">
+</head>
+<body>
+  <div class="musicBox">
+    <div class="warpCard">
+      <div class="cardBox">
+        <!-- 前面 -->
+        <div class="front-side">
+          <div class="cardDetail">
+            <div class="songInfo">
+              <dl>
+                <dt>歌曲详情：</dt>
+                <dd><i class="fa fa-file"></i>&nbsp;歌曲名: <span class="songName">xxxxx</span></dd>
+                <dd><i class="fa fa-vcard"></i>&nbsp;歌手： <span class="artist">Beyond</span></dd>
+                <dd><i class="fa fa-folder-open"></i>&nbsp;专辑：<span class="album">超越</span></dd>
+              </dl>
+            </div>
+            <div class="songPoster">
+              <img class="rotatePoster" src="img/poster.jpg" alt="">
+              <span class="fa fa-music fz-12"></span>
+              <span class="fa fa-music fz-16"></span>
+              <span class="fa fa-music fz-18"></span>
+              <span class="fa fa-music fz-12"></span>
+              <span id="toggleRunMusicSignal"></span>
+            </div>
+          </div>
+          
+          <div class="songCtr">
+            <div class="audioWrap"><audio id="audio" src=""></audio></div>
+            <div class="progressBar">
+                <span class="playTime">00:00</span>
+                <span class="curPoint"></span>
+                <span class="totalTime">00:00</span>
+                <progress id="playPercent" value="0" max=100></progress>
+            </div> 
+            <div class="ctr-btn">
+              <div title="搜索" class="list-btn"><i class="fa fa-search"></i></div>
+              <div title="回切" class="prev-btn"><i class="fa fa-step-backward"></i></div>
+              <div title="播放/暂停" class="play-btn"><i class="fa fa-play"></i></div>
+              <div title="切歌" class="next-btn"><i class="fa fa-step-forward"></i></div>
+              <div title="音量" class="vol-wrap">
+                <i class="soundBtn fa fa-volume-up"></i>
+                <span class="soundBar" id="volumPercent">
+                  <i class="curSoundPoint"></i>
+                  <span class="volmBarBg"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+          <span type="lyrics" id="toggleLyrics" class="toggleSongLyric">词</span>
+        </div>
+        <!-- 背面 -->
+        <div class="back-side">
+          <div class="lyrics">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+              <p class="active">Quidem officiis dicta id iure vel quaerat assumenda</p>
+              <p>libero dolores iusto voluptatum minus fuga fugiat eveniet natus labore</p>
+              <p> quod perspiciatis odio sit!</p>
+          </div>
+          <span type="song" id="toggleSong" class="toggleSongLyric">曲</span>
+        </div>
+      </div>
+    </div>
+    <!-- search box and list -->
+    <div class="mc_search_box">
+      <span class="closeBtn fa fa-close"></span>
+      <h1>sousuo</h1>
+    </div>
+  </div>
+
+  <script src="js/foxmusic.js"></script>
+</body>
+</html>
